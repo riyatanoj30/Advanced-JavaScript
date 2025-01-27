@@ -1,9 +1,6 @@
 let num = 25;
-if(num % 2 == 0)
-{
+if(num % 2 == 0){
     document.write("Even");
-}
-else
-{
+}else{
     document.write("Odd");
 }
