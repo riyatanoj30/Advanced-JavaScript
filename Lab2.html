@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Weather Application</h1>
+    </header>
+    <main>
+        <section class="weather-search">
+            <label for="city">Enter City Name:</label>
+            <input type="text" id="city" name="city" placeholder="City Name" required>
+            <button id="search-btn">Search</button>
+        </section>
+        <section class="weather-info">
+            <h2>Weather Information</h2>
+            <p id="city-name">City: Not Available</p>
+            <p id="temperature">Temperature: Not Available</p>
+            <p id="weather-description">Description: Not Available</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Weather Application</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
