@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        function Person (first, last, age, designation){
+            this.firstname = first;
+            this.lastname = last;
+            this.age = age;
+            this.designation = designation;
+        }
+        const myFather = new Person("Tanoj", "Mhatre", 51, "Corporate Employee");
+        document.getElementById("demo").innerHTML = "My father is" + myFather.age + ".";
+        const myMother = new Person("Vishwa", "Mhatre", 48, "Teacher");
+        document.getElementById("demo").innerHTML = "My mother is" + myMother.age + ".";
+        const myBrother = new Person("Soham", "Mhatre", 18, "Student");
+        document.getElementById("demo").innerHTML = "My brother is" + myBrother.age + ".";
+        const mySister = new Person("Swara", "Mhatre", 16, "Student");
+        document.getElementById("demo").innerHTML = "My sister is" + mySister.age + ".";
+    </script>
+</body>
+</html>
