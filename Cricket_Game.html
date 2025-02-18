@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPS Game</title>
+</head>
+<body>
+    <h1>Stone Paper Scissor</h1>
+    
+    <button onclick="
+        let randomNumber = Math.random() * 3;
+        let computerChoice;
+        if (randomNumber < 1) {
+            computerChoice = 'Stone';
+        } else if (randomNumber < 2) {
+            computerChoice = 'Paper';
+        } else {
+            computerChoice = 'Scissor';
+        }
+
+        let resultMsg;
+        if (computerChoice === 'Paper') {
+            resultMsg = 'Computer won';
+        } else if (computerChoice === 'Stone') {
+            resultMsg = 'It\'s a tie';
+        } else {
+            resultMsg = 'User won';
+        }
+
+        alert(`You have chosen Stone. Computer chose ${computerChoice} and ${resultMsg}`);
+    ">Stone</button>
+
+    <button onclick="
+        let randomNumber = Math.random() * 3;
+        let computerChoice;
+        if (randomNumber < 1) {
+            computerChoice = 'Stone';
+        } else if (randomNumber < 2) {
+            computerChoice = 'Paper';
+        } else {
+            computerChoice = 'Scissor';
+        }
+
+        let resultMsg;
+        if (computerChoice === 'Paper') {
+            resultMsg = 'It\'s a tie';
+        } else if (computerChoice === 'Stone') {
+            resultMsg = 'User won';
+        } else {
+            resultMsg = 'Computer won';
+        }
+
+        alert(`You have chosen Paper. Computer chose ${computerChoice} and ${resultMsg}`);
+    ">Paper</button>
+
+    <button onclick="
+        let randomNumber = Math.random() * 3;
+        let computerChoice;
+        if (randomNumber < 1) {
+            computerChoice = 'Stone';
+        } else if (randomNumber < 2) {
+            computerChoice = 'Paper';
+        } else {
+            computerChoice = 'Scissor';
+        }
+
+        let resultMsg;
+        if (computerChoice === 'Paper') {
+            resultMsg = 'User won';
+        } else if (computerChoice === 'Stone') {
+            resultMsg = 'Computer won';
+        } else {
+            resultMsg = 'It\'s a tie';
+        }
+
+        alert(`You have chosen Scissor. Computer chose ${computerChoice} and ${resultMsg}`);
+    ">Scissor</button>
+
+</body>
+</html>
