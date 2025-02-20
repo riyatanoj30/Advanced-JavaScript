@@ -9,53 +9,64 @@
     <h1>Stone Paper Scissor</h1>
     <button onclick="
         let computerChoice = generateComputerChoice();
-        let resultMsg;
-        if (computerChoice === 'Paper') {
-            resultMsg = 'Computer won';
-        } else if (computerChoice === 'Stone') {
-            resultMsg = 'It\'s a tie';
-        } else {
-            resultMsg = 'User won';
-        }
-        alert(`You have chosen Stone. Computer chose ${computerChoice} and ${resultMsg}`);
+        let resultMsg = getResult('Stone', computerChoice);
+        showResult('Stone', computerChoice, resultMsg);
     ">Stone</button>
 
     <button onclick="
-        computerChoice = generateComputerChoice();
-        let resultMsg;
-        if (computerChoice === 'Paper') {
-            resultMsg = 'It\'s a tie';
-        } else if (computerChoice === 'Stone') {
-            resultMsg = 'User won';
-        } else {
-            resultMsg = 'Computer won';
-        }
-        alert(`You have chosen Paper. Computer chose ${computerChoice} and ${resultMsg}`);
+        let computerChoice = generateComputerChoice();
+        let resultMsg = getResult('Paper', computerChoice);
+        showResult('Paper', computerChoice, resultMsg);
     ">Paper</button>
 
     <button onclick="
-        computerChoice = generateComputerChoice();
-        let resultMsg;
-        if (computerChoice === 'Paper') {
-            resultMsg = 'User won';
-        } else if (computerChoice === 'Stone') {
-            resultMsg = 'Computer won';
-        } else {
-            resultMsg = 'It\'s a tie';
-        }
-        alert(`You have chosen Scissor. Computer chose ${computerChoice} and ${resultMsg}`);
+        let computerChoice = generateComputerChoice();
+        let resultMsg = getResult('Scissor', computerChoice);
+        showResult('Scissor', computerChoice, resultMsg);
     ">Scissor</button>
 
     <script>
         function generateComputerChoice() {
             let randomNumber = Math.random() * 3;
-            if (randomNumber > 0 && randomNumber <= 1) {
+            if (randomNumber <= 1) {
                 return 'Stone';
-            } else if (randomNumber > 1 && randomNumber <= 2) {  // Fixed syntax error here
+            } else if (randomNumber <= 2) {
                 return 'Paper';
             } else {
                 return 'Scissor';
             }
+        }
+
+        function getResult(userMove, computerMove){
+            if (userMove === 'Stone'){
+                if (computerMove === 'Paper') {
+                    return 'Computer won';
+                } else if (computerMove === 'Stone') {
+                    return 'It\'s a tie';
+                } else {
+                    return 'User won';
+                }
+            } else if (userMove === 'Paper'){
+                if (computerMove === 'Paper') {
+                    return 'It\'s a tie';
+                } else if (computerMove === 'Stone') {
+                    return 'User won';
+                } else {
+                    return 'Computer won';
+                }
+            } else {
+                if (computerMove === 'Paper') {
+                    return 'User won';
+                } else if (computerMove === 'Stone') {
+                    return 'Computer won';
+                } else {
+                    return 'It\'s a tie';
+                }
+            }
+        }
+
+        function showResult(userMove, computerMove, result){
+            alert(`You have chosen ${userMove}. Computer choice is ${computerMove} and ${result}`);
         }
     </script>
 </body>
