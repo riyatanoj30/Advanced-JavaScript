@@ -8,7 +8,7 @@
 <body>
     <h1>Stone Paper Scissor</h1>
     <button onclick="
-        generateComputerChoice();
+        let computerChoice = generateComputerChoice();
         let resultMsg;
         if (computerChoice === 'Paper') {
             resultMsg = 'Computer won';
@@ -21,7 +21,7 @@
     ">Stone</button>
 
     <button onclick="
-        generateComputerChoice();
+        computerChoice = generateComputerChoice();
         let resultMsg;
         if (computerChoice === 'Paper') {
             resultMsg = 'It\'s a tie';
@@ -34,7 +34,7 @@
     ">Paper</button>
 
     <button onclick="
-        generateComputerChoice();
+        computerChoice = generateComputerChoice();
         let resultMsg;
         if (computerChoice === 'Paper') {
             resultMsg = 'User won';
@@ -47,15 +47,14 @@
     ">Scissor</button>
 
     <script>
-        let computerChoice;
         function generateComputerChoice() {
             let randomNumber = Math.random() * 3;
             if (randomNumber > 0 && randomNumber <= 1) {
-                computerChoice = 'Stone';
+                return 'Stone';
             } else if (randomNumber > 1 && randomNumber <= 2) {  // Fixed syntax error here
-                computerChoice = 'Paper';
+                return 'Paper';
             } else {
-                computerChoice = 'Scissor';
+                return 'Scissor';
             }
         }
     </script>
