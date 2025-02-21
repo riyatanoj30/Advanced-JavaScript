@@ -25,48 +25,87 @@
         showResult('Scissor', computerChoice, resultMsg);
     ">Scissor</button>
 
+    <button onclick="localStorage.clear()
+        resetScore();
+    ">Reset</button>
+
     <script>
+        let scoreStr = localStorage.getItem('Score');
+        let score;
+        resetScore(scoreStr);
+        function resetScore(scoreStr) {
+            score = scoreStr ? JSON.parse(scoreStr) : {
+                win: 0,
+                lost: 0,
+                tie: 0,
+            };
+
+            // Add displayScore method to always be available
+            score.displayScore = function() { 
+                return `Won: ${this.win}, Lost: ${this.lost}, Tie: ${this.tie}`;
+            };
+        }
+
         function generateComputerChoice() {
-            let randomNumber = Math.random() * 3;
-            if (randomNumber <= 1) {
+            // Generate random choice for computer
+            let randomNumber = Math.floor(Math.random() * 3);
+            if (randomNumber === 0) {
                 return 'Stone';
-            } else if (randomNumber <= 2) {
+            } else if (randomNumber === 1) {
                 return 'Paper';
             } else {
                 return 'Scissor';
             }
         }
 
-        function getResult(userMove, computerMove){
-            if (userMove === 'Stone'){
+        function getResult(userMove, computerMove) {
+            // Determine the result based on user and computer choices
+            if (userMove === 'Stone') {
                 if (computerMove === 'Paper') {
+                    score.lost++;
                     return 'Computer won';
                 } else if (computerMove === 'Stone') {
+                    score.tie++;
                     return 'It\'s a tie';
                 } else {
+                    score.win++;
                     return 'User won';
                 }
-            } else if (userMove === 'Paper'){
+            } else if (userMove === 'Paper') {
                 if (computerMove === 'Paper') {
+                    score.tie++;
                     return 'It\'s a tie';
                 } else if (computerMove === 'Stone') {
+                    score.win++;
                     return 'User won';
                 } else {
+                    score.lost++;
                     return 'Computer won';
                 }
             } else {
                 if (computerMove === 'Paper') {
+                    score.win++;
                     return 'User won';
                 } else if (computerMove === 'Stone') {
+                    score.lost++;
                     return 'Computer won';
                 } else {
+                    score.tie++;
                     return 'It\'s a tie';
                 }
             }
         }
 
-        function showResult(userMove, computerMove, result){
-            alert(`You have chosen ${userMove}. Computer choice is ${computerMove} and ${result}`);
+        function showResult(userMove, computerMove, result) {
+            // Update localStorage with the new score
+            localStorage.setItem('Score', JSON.stringify(score));
+            
+            // Display result in an alert box
+            alert(`You have chosen ${userMove}. Computer choice is ${computerMove}
+            
+            ${result}
+            
+            ${score.displayScore()}`);
         }
     </script>
 </body>
