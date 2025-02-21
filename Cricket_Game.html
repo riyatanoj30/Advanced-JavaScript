@@ -26,24 +26,20 @@
         showResult('Scissor', computerChoice, resultMsg);
     ">✌</button>
 
-    <!-- Display areas -->
     <div id="user-move"></div>
     <div id="computer-move"></div>
     <div id="result"></div>
     <div id="score"></div>
 
-    <button onclick="
+    <button class="reset" onclick="
         localStorage.clear();
         resetScore();
         document.querySelector('#score').innerText = score.displayScore();
     ">Reset</button>
 
     <script>
-        // Get score from localStorage
         let scoreStr = localStorage.getItem('Score');
         let score;
-        
-        // Initialize or reset score
         resetScore(scoreStr);
 
         function resetScore(scoreStr) {
@@ -52,16 +48,10 @@
                 lost: 0,
                 tie: 0,
             };
-
-            // Add displayScore method
             score.displayScore = function() { 
                 return `Won: ${this.win}, Lost: ${this.lost}, Tie: ${this.tie}`;
             };
-            
-            // Display reset score
             document.querySelector('#score').innerText = score.displayScore();
-
-            // Clear other display areas after reset
             document.querySelector('#user-move').innerText = '';
             document.querySelector('#computer-move').innerText = '';
             document.querySelector('#result').innerText = '';
@@ -116,21 +106,10 @@
         }
 
         function showResult(userMove, computerMove, result) {
-            // Update score in localStorage
             localStorage.setItem('Score', JSON.stringify(score));
-            
-            // Display user choice
-            document.querySelector('#user-move').innerText = 
-                userMove ? `You chose: ${userMove}` : '';
-            
-            // Display computer choice
-            document.querySelector('#computer-move').innerText = 
-                computerMove ? `Computer chose: ${computerMove}` : '';
-            
-            // Display result message
+            document.querySelector('#user-move').innerText = userMove ? `You chose: ${userMove}` : '';
+            document.querySelector('#computer-move').innerText = computerMove ? `Computer chose: ${computerMove}` : '';
             document.querySelector('#result').innerText = result || '';
-            
-            // Display current score
             document.querySelector('#score').innerText = score.displayScore();
         }
     </script>
