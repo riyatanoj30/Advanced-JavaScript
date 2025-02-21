@@ -5,38 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPS Game</title>
 </head>
-<body>
+<body align="center">
     <h1>Stone Paper Scissor</h1>
-    <button onclick="
+    <button class="choice-button" onclick="
         let computerChoice = generateComputerChoice();
         let resultMsg = getResult('Stone', computerChoice);
         showResult('Stone', computerChoice, resultMsg);
-    ">Stone</button>
+    ">🤜</button>
 
-    <button onclick="
+    <button class="choice-button" onclick="
         let computerChoice = generateComputerChoice();
         let resultMsg = getResult('Paper', computerChoice);
         showResult('Paper', computerChoice, resultMsg);
-    ">Paper</button>
+    ">🖐</button>
 
-    <button onclick="
+    <button class="choice-button" onclick="
         let computerChoice = generateComputerChoice();
         let resultMsg = getResult('Scissor', computerChoice);
         showResult('Scissor', computerChoice, resultMsg);
-    ">Scissor</button>
-
-    <button onclick="
-        localStorage.clear();
-        resetScore();
-        // Only show the score area after reset
-        document.querySelector('#score').innerText = score.displayScore();
-    ">Reset</button>
+    ">✌</button>
 
     <!-- Display areas -->
     <div id="user-move"></div>
     <div id="computer-move"></div>
     <div id="result"></div>
     <div id="score"></div>
+
+    <button onclick="
+        localStorage.clear();
+        resetScore();
+        document.querySelector('#score').innerText = score.displayScore();
+    ">Reset</button>
 
     <script>
         // Get score from localStorage
