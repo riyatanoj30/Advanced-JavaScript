@@ -25,14 +25,27 @@
         showResult('Scissor', computerChoice, resultMsg);
     ">Scissor</button>
 
-    <button onclick="localStorage.clear()
+    <button onclick="
+        localStorage.clear();
         resetScore();
+        // Only show the score area after reset
+        document.querySelector('#score').innerText = score.displayScore();
     ">Reset</button>
 
+    <!-- Display areas -->
+    <div id="user-move"></div>
+    <div id="computer-move"></div>
+    <div id="result"></div>
+    <div id="score"></div>
+
     <script>
+        // Get score from localStorage
         let scoreStr = localStorage.getItem('Score');
         let score;
+        
+        // Initialize or reset score
         resetScore(scoreStr);
+
         function resetScore(scoreStr) {
             score = scoreStr ? JSON.parse(scoreStr) : {
                 win: 0,
@@ -40,14 +53,21 @@
                 tie: 0,
             };
 
-            // Add displayScore method to always be available
+            // Add displayScore method
             score.displayScore = function() { 
                 return `Won: ${this.win}, Lost: ${this.lost}, Tie: ${this.tie}`;
             };
+            
+            // Display reset score
+            document.querySelector('#score').innerText = score.displayScore();
+
+            // Clear other display areas after reset
+            document.querySelector('#user-move').innerText = '';
+            document.querySelector('#computer-move').innerText = '';
+            document.querySelector('#result').innerText = '';
         }
 
         function generateComputerChoice() {
-            // Generate random choice for computer
             let randomNumber = Math.floor(Math.random() * 3);
             if (randomNumber === 0) {
                 return 'Stone';
@@ -59,7 +79,6 @@
         }
 
         function getResult(userMove, computerMove) {
-            // Determine the result based on user and computer choices
             if (userMove === 'Stone') {
                 if (computerMove === 'Paper') {
                     score.lost++;
@@ -97,15 +116,22 @@
         }
 
         function showResult(userMove, computerMove, result) {
-            // Update localStorage with the new score
+            // Update score in localStorage
             localStorage.setItem('Score', JSON.stringify(score));
             
-            // Display result in an alert box
-            alert(`You have chosen ${userMove}. Computer choice is ${computerMove}
+            // Display user choice
+            document.querySelector('#user-move').innerText = 
+                userMove ? `You chose: ${userMove}` : '';
             
-            ${result}
+            // Display computer choice
+            document.querySelector('#computer-move').innerText = 
+                computerMove ? `Computer chose: ${computerMove}` : '';
             
-            ${score.displayScore()}`);
+            // Display result message
+            document.querySelector('#result').innerText = result || '';
+            
+            // Display current score
+            document.querySelector('#score').innerText = score.displayScore();
         }
     </script>
 </body>
